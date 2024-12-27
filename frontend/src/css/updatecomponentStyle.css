@@ -1,0 +1,37 @@
+.updatecomponent{
+   top:0;
+   height: 100%;
+   width: 100%;
+   background-color: antiquewhite;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 2;
+   visibility: none;
+   opacity: 0;
+   transition:opacity 0.4s ease-in-out;
+}
+.updatecomponent.active{
+    visibility: visible;
+    opacity: 1;
+    position: fixed !important;
+    
+}
+.updatecomponent form{
+    border:none;
+}
+.cross{
+    position: absolute;
+    top: 23px;
+    right: 26px;
+    font-size: 25px;
+    padding: 2px;
+    border-radius: 51%;
+    transition:color 0.4s ease-in;
+}
+.cross:hover{
+    color: #f11f1f;
+}
+.parentUpdateForm{
+    width: 50%;
+}
