@@ -1,8 +1,8 @@
 
-import express, { json } from 'express'
-import { connect } from 'mongoose'
-import TasksModel, { find, updateOne, deleteOne } from './models/TasksModel.js'
-import cors from 'cors'
+const express = require('express')
+const mongoose = require('mongoose')
+const TasksModel = require('./models/TasksModel.js')
+var cors = require('cors')
 
 const app = express()
 
@@ -11,16 +11,16 @@ app.use(cors())
 const port = "2000"
 
 //Middleware parses incoming json request
-app.use(json());
+app.use(express.json());
 
 //Connection to database
 //const url = 'mongodb://localhost:27017/todolist'
-connect(url).then(() => console.log('Db Connected')).catch((error) => console.log(error))
+mongoose.connect(url).then(() => console.log('Db Connected')).catch((error) => console.log(error))
 
 app.get('/api/get', async (req, res) => {
     try {
        
-        const getAllRecords = await find({})
+        const getAllRecords = await TasksModel.find({})
         console.log(getAllRecords)
         return res.status(200).json({ message: "Task list" ,'data':getAllRecords})
     }
@@ -55,7 +55,7 @@ app.put('/api/update/:id', async (req, res) => {
     try {
         const  id = req.params.id
         const {title, description} = req.body
-        const updateTask = await updateOne({'_id':id},{
+        const updateTask = await TasksModel.updateOne({'_id':id},{
             "title":title,
             "description":description
         })
@@ -70,7 +70,7 @@ app.put('/api/update/:id', async (req, res) => {
 app.delete('/api/delete/:id', async (req, res) => {
     try {
         const  id = req.params.id
-        const deleteTask = await deleteOne({'_id':id})
+        const deleteTask = await TasksModel.deleteOne({'_id':id})
         return res.status(200).json({ message: "Task deleted" ,'data':deleteTask})
     }
     catch (error) {

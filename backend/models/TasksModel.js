@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose'
+const mongoose = require('mongoose')
 
-const Taskscheme = Schema({
+const Taskscheme = mongoose.Schema({
     title:{
         required:true,
         type:String
@@ -11,5 +11,5 @@ const Taskscheme = Schema({
     }
 })
 
-const scheme = model('task',Taskscheme)
-export default  scheme
+const scheme = mongoose.model('task',Taskscheme)
+module.exports =  scheme
