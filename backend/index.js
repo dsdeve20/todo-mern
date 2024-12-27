@@ -15,8 +15,7 @@ app.use(express.json());
 
 //Connection to database
 //const url = 'mongodb://localhost:27017/todolist'
-const url  = 'mongodb+srv://dsdeve20:w6NTobxDQTZ8kRxZ@cluster0.mcydg.mongodb.net/
-'
+const url  = 'mongodb+srv://dsdeve20:w6NTobxDQTZ8kRxZ@cluster0.mcydg.mongodb.net/'
 mongoose.connect(url).then(() => console.log('Db Connected')).catch((error) => console.log(error))
 
 app.get('/api/get', async (req, res) => {
