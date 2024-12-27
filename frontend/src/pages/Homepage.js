@@ -18,7 +18,7 @@ function Homepage() {
         getrequest();
     }, [])
     const getrequest = () => {
-        axios.get('http://localhost:2000/api/get')
+        axios.get('https://todo-mern-bro1.onrender.com/api/get')
             .then(function (response) {
                 setContent(response.data.data)
                 console.log(response);
@@ -31,8 +31,8 @@ function Homepage() {
             });
     }
     const deleteRecord = (id) => {
-        if (id != '') {
-            axios.delete(`http://localhost:2000/api/delete/${id}`)
+        if (id !== '') {
+            axios.delete(`https://todo-mern-bro1.onrender.com/delete/${id}`)
                 .then(function (response) {
                     getrequest()
                 })
@@ -43,10 +43,7 @@ function Homepage() {
 
                 });
         }
-        // console.log(id)
-        // return false;
-        // const filtereddata = content.filter((data)=>data.id !==id)
-        // setContent(filtereddata)
+       
     }
     const addSubmitForm = (e) => {
         e.preventDefault()
@@ -60,7 +57,7 @@ function Homepage() {
             alert("Description cannot be blank")
             return false
         }
-        axios.post(`http://localhost:2000/api/create`, {
+        axios.post(`https://todo-mern-bro1.onrender.com/api/create`, {
             title: title,
             description: description
         }).then(function (response) {

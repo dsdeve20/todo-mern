@@ -20,7 +20,7 @@ function UpdateComponent(props) {
             alert("Description cannot be blank")
             return false
         }
-        axios.put(`http://localhost:2000/api/update/${formFieldsData._id}`, {
+        axios.put(`https://todo-mern-bro1.onrender.com/api/update/${formFieldsData._id}`, {
             title: title,
             description: description
         }).then(function (response) {
